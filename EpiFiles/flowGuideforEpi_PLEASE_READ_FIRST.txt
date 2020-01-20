@@ -1,0 +1,29 @@
+1. preprocess_rawVals.R 
+	-> this involves processing the raw betas. 
+	-> The values generated in this step can be loading in using pcaResandpc1to10plusMeta.Rdata (pca results and metadata(data.df)) and 100_samples_updated_metadata (metadata(meta100) and normalised betas(qq.ready))
+2. EpiPCAplots.R
+	-> this generates the 2 epi pca plots in the paper
+	-> some manual editing of these plots (line size, etc) was implemented after by A.Ahern
+	-> values created in step one are loading in as .Rdata files
+3. ServerRunModel_100Samples_All_clusterX.R (X =1,2,3,or 4) 
+	-> run mixed linear model across the clusters to see if any are significantly different
+	-> calculates p values and annotates CpGs
+	-> processed betas and metadata are loading in
+	-> output is saved in ServerRunModel_100Samples_All_fdr_pval_clusterX.Rdata (X =1,2,3,or 4) 
+	-> output also saved in topHits1and2, topHits1and2anno, LinTopHits_3_anno_FDR_BON, LinTopHits_4_anno_FDR_BON
+4. get_anno_server_1and2.R 
+	-> saves and annotates the top hits from clusters 1 and 2 and writes out to topHits1and2, topHits1and2anno
+5. InflamedvsNon_CD_modelANDpcModel.R
+	-> run mixed linear model across inflamed vs non inflamed CD to see if any are significantly different CpGs
+	-> processed betas and metadata are loading in
+	-> calculates p values and annotates CpGs
+	-> also contains code for the principal component model to adjust for cell type deconvolution
+	-> output is saved in LinTopHits_IvsNI_sig_FDR_BON.Rdata 
+	-> output also saved in topHits1and2, topHits1and2anno, LinTopHits_3_anno_FDR_BON, LinTopHits_4_anno_FDR_BON
+6. get_delta_clusterX.R (X =1,2,3,or 4) 
+	-> calculates the delta for each CpG site (difference in mean methylation)
+7. PCmodel_3and4.R and PCmodel_1and2.R
+	-> contains code for the principal component model to adjust for cell type deconvolution
+	-> outputs PC10 tables for the clusters (csv files available all named PC*)
+8. BoxPlotsRawBetaValues.R
+	-> code for raw betas boxplots
