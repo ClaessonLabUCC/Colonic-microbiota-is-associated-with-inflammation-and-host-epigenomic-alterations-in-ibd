@@ -19,7 +19,6 @@
 	-> calculates p values and annotates CpGs
 	-> also contains code for the principal component model to adjust for cell type deconvolution
 	-> output is saved in LinTopHits_IvsNI_sig_FDR_BON.Rdata 
-	-> output also saved in topHits1and2, topHits1and2anno, LinTopHits_3_anno_FDR_BON, LinTopHits_4_anno_FDR_BON
 6. get_delta_clusterX.R (X =1,2,3,or 4) 
 	-> calculates the delta for each CpG site (difference in mean methylation)
 7. PCmodel_3and4.R and PCmodel_1and2.R
